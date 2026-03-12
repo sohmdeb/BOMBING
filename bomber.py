@@ -269,8 +269,6 @@ def infinite(pn, dl, ch, max):
         count_inf += 1
         # os.system('echo CyberGhost >> count.xxx')
         time.sleep(float(dl))
-        if (count_inf > maxlim):
-            exit()
 
 
 def checkinternet():
@@ -829,16 +827,6 @@ elif type == 0:
         nm = int(input("Enter Number of Messages To Send: "))
         dl = float(
             input("Enter Delay time (in seconds) [Recommended 10 sec ] : "))
-maxlim = 0
-if cc == "91":
-    maxlim = 500
-else:
-    maxlim = 100
-if nm > maxlim:
-    print('\n\n\tSorry Due To Misuse Of This Script We Only Provide ' +
-          str(maxlim) + ' SMS At Once...\n\n')
-    print('Number Of SMS Has been Set To ' + str(maxlim))
-    nm = maxlim
 if not cc.strip() == "91":
     if type == 1:
         print(
@@ -895,7 +883,7 @@ if nm == 0:
     os.system('rm *.xxx* > /dev/null 2>&1')
     print("\n\nStarting Bomb....")
     for i in range(nt):
-        t[i] = threading.Thread(target=infinite, args=(pn, dl, ch, maxlim,))
+        t[i] = threading.Thread(target=infinite, args=(pn, dl, ch,))
         t[i].daemon = True
         t[i].start()
     time.sleep(2)
@@ -904,9 +892,6 @@ if nm == 0:
         ci += 1
         l = count_inf
         print("    Total Number of Requests Sent : ", l)
-        if int(l) > maxlim:
-            print('\n\n\tSorry Due To Misuse Of This Script We Only Provide ' +
-                  str(maxlim) + ' SMS At Once...\n\n')
             input('Press Enter To Exit...')
             os.system('rm *xxx* > /dev/null 2>&1')
             banner()
